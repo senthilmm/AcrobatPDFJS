@@ -8,3 +8,5 @@ My learning of scripting the PDF Forms
   var l = [" ", "a", "b", "c". "d"];
   lst.setItems(l);
 ```
+
+It is easier to fill in multiple dropdown menu having the same content.  
