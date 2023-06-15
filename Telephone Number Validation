@@ -1,0 +1,30 @@
+// Validate the telephone number when the field value changes
+this.getField("phoneNumber").onChange = function() {
+  var phoneNumber = this.value;
+  var countryCode = "US"; // Set the default country code
+
+  // Determine the country code based on user input or any other method
+  // Example: If the field name for country selection is "countryCodeField"
+  // countryCode = this.getField("countryCodeField").value;
+
+  // Perform validation based on the country code
+  if (countryCode === "US") {
+    var regex = /^(?:\+?1[-.\s]?)?\(?([0-9]{3})\)?[-.\s]?([0-9]{3})[-.\s]?([0-9]{4})$/;
+    if (regex.test(phoneNumber)) {
+      // Valid US telephone number
+      this.fillColor = color.transparent; // Optionally, change the field color to indicate validity
+    } else {
+      // Invalid telephone number
+      this.fillColor = color.red; // Optionally, change the field color to indicate invalidity
+    }
+  } else if (countryCode === "UK") {
+    var regex = /^(?:(?:\+44\s?|0)(?:\d{5}\s?\d{4,5}|(?:\d{3}\s?\d{3}\s?\d{4})))$/;
+    if (regex.test(phoneNumber)) {
+      // Valid UK telephone number
+      this.fillColor = color.transparent;
+    } else {
+      // Invalid telephone number
+      this.fillColor = color.red;
+    }
+  }
+};
