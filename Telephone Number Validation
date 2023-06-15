@@ -28,3 +28,43 @@ this.getField("phoneNumber").onChange = function() {
     }
   }
 };
+
+
+
+// Function to validate US and UK telephone numbers
+function validateTelephoneNumber(value) {
+  // Regular expression patterns for US and UK telephone numbers
+  var usPattern = /^\d{3}-\d{3}-\d{4}$/; // e.g., 123-456-7890
+  var ukPattern = /^\+44\s?(\(\d{1,5}\)\s?|0)?\d{6,9}$/; // e.g., +44 (01234) 567890 or +44 0123456789 or +440123456789
+
+  // Convert the value to a string and remove any whitespace
+  var cleanedValue = value.toString().replace(/\s/g, "");
+
+  // Check if the value matches either US or UK pattern
+  if (usPattern.test(cleanedValue) || ukPattern.test(cleanedValue)) {
+    // Valid telephone number
+    return true;
+  }
+
+  // Invalid telephone number
+  return false;
+}
+
+// Usage example
+var phoneNumber = getField("telephoneNumber").value; // Replace "telephoneNumber" with the actual field name
+var isValid = validateTelephoneNumber(phoneNumber);
+
+if (isValid) {
+  // The telephone number is valid
+  console.log("Valid telephone number");
+} else {
+  // The telephone number is invalid
+  console.log("Invalid telephone number");
+}
+
+
+
+
+
+
+
